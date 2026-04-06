@@ -1,0 +1,20 @@
+{
+  "/api/quote/route": "app/api/quote/route.js",
+  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/auth/login/page": "app/auth/login/page.js",
+  "/auth/register/page": "app/auth/register/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/legal/page": "app/legal/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/admin/messages/page": "app/admin/messages/page.js",
+  "/admin/users/page": "app/admin/users/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/clients/page": "app/admin/clients/page.js",
+  "/dashboard/documents/page": "app/dashboard/documents/page.js",
+  "/admin/projects/page": "app/admin/projects/page.js",
+  "/dashboard/messages/page": "app/dashboard/messages/page.js",
+  "/dashboard/project/page": "app/dashboard/project/page.js",
+  "/dashboard/profile/page": "app/dashboard/profile/page.js",
+  "/dashboard/page": "app/dashboard/page.js"
+}

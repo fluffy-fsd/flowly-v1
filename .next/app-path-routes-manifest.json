@@ -1,0 +1,20 @@
+{
+  "/api/quote/route": "/api/quote",
+  "/page": "/",
+  "/_not-found/page": "/_not-found",
+  "/auth/login/page": "/auth/login",
+  "/auth/register/page": "/auth/register",
+  "/blog/[slug]/page": "/blog/[slug]",
+  "/legal/page": "/legal",
+  "/blog/page": "/blog",
+  "/admin/messages/page": "/admin/messages",
+  "/admin/users/page": "/admin/users",
+  "/admin/page": "/admin",
+  "/admin/clients/page": "/admin/clients",
+  "/dashboard/documents/page": "/dashboard/documents",
+  "/admin/projects/page": "/admin/projects",
+  "/dashboard/messages/page": "/dashboard/messages",
+  "/dashboard/project/page": "/dashboard/project",
+  "/dashboard/profile/page": "/dashboard/profile",
+  "/dashboard/page": "/dashboard"
+}

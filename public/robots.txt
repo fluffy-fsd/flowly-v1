@@ -1,0 +1,17 @@
+# *
+User-agent: *
+Allow: /
+
+# GPTBot
+User-agent: GPTBot
+Disallow: /
+
+# CCBot
+User-agent: CCBot
+Disallow: /
+
+# Host
+Host: https://fstudios.fr
+
+# Sitemaps
+Sitemap: https://fstudios.fr/sitemap.xml
