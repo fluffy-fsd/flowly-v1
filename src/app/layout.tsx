@@ -1,35 +1,54 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Toaster } from "sonner";
-import { AuthProvider } from "@/lib/auth-context";
-import "@/styles/globals.css";
-import { baseMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/metadata";
+import "@fontsource/outfit/300.css";
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
+import "@fontsource/outfit/700.css";
+import "@fontsource/outfit/800.css";
+import "@fontsource/outfit/900.css";
+import "@fontsource/sora/300.css";
+import "@fontsource/sora/400.css";
+import "@fontsource/sora/500.css";
+import "@fontsource/sora/600.css";
+import "@fontsource/sora/700.css";
+import "@fontsource/sora/800.css";
+import "./globals.css";
 
-export const metadata: Metadata = baseMetadata;
-export const viewport = { width: "device-width", initialScale: 1, maximumScale: 5, themeColor: "#07090f" };
+export const metadata: Metadata = {
+  title: "Flowly — Agence Digitale Premium | Sites Web, SaaS & Applications",
+  description:
+    "Flowly conçoit des solutions digitales sur-mesure : sites vitrines, SaaS, applications mobiles. Portée par FStudios & Volostudios. Devis gratuit en ligne.",
+  keywords: [
+    "agence web",
+    "agence digitale",
+    "création site internet",
+    "développement web",
+    "SaaS",
+    "application mobile",
+    "France",
+    "Flowly",
+  ],
+  openGraph: {
+    title: "Flowly — Agence Digitale Premium",
+    description:
+      "Sites web, SaaS & applications sur-mesure. L'excellence digitale par FStudios & Volostudios.",
+    url: "https://theflowly.fr",
+    siteName: "Flowly",
+    locale: "fr_FR",
+    type: "website",
+  },
+  robots: { index: true, follow: true },
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="manifest" href="/manifest.webmanifest" />
-      </head>
-      <body className="noise" style={{ fontFamily: "system-ui,-apple-system,'Segoe UI',sans-serif", backgroundColor: "#07090f", color: "white" }}>
-        <AuthProvider>
-          <div className="page-wrapper">
-            {children}
-          </div>
-        </AuthProvider>
-        <Toaster position="bottom-right" toastOptions={{ style: { background: "#0f1220", border: "1px solid rgba(255,255,255,0.1)", color: "white" } }} />
-        <Analytics />
-        <SpeedInsights />
+    <html lang="fr">
+      <body className="antialiased">
+        {children}
       </body>
     </html>
   );

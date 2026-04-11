@@ -1,29 +1,21 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { StackSection } from "@/components/sections/StackSection";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { QuoteSection } from "@/components/quote/QuoteSection";
-import { FAQSection } from "@/components/sections/FAQSection";
-import { CTASection } from "@/components/sections/CTASection";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import Realisations from "@/components/Realisations";
+import Processus from "@/components/Processus";
+import DevisForm from "@/components/DevisForm";
+import Footer from "@/components/Footer";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
+    <main>
       <Navbar />
-      <main>
-        <HeroSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <StackSection />
-        <TestimonialsSection />
-        <QuoteSection />
-        <FAQSection />
-        <CTASection />
-      </main>
+      <Hero />
+      <Services />
+      <Realisations />
+      <Processus />
+      <DevisForm />
       <Footer />
-    </>
+    </main>
   );
 }
