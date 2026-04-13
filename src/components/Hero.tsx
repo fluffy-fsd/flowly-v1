@@ -24,7 +24,7 @@ const phoneScreens: PhoneScreen[] = [
           <span className="text-white/90 text-xs font-semibold tracking-wide">Flowly</span>
         </div>
         <div className="flex-1 flex flex-col justify-center">
-          <p className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-3">Agence digitale</p>
+          <p className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-3">Agence web</p>
           <h3 className="text-white font-bold text-xl leading-tight mb-3" style={{ fontFamily: "var(--font-sora)" }}>
             Votre vision,<br />notre code.
           </h3>
@@ -204,21 +204,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="inline-flex items-center gap-x-3 rounded-full py-1.5 px-4 text-sm bg-white/60 backdrop-blur-sm"
-              style={{ border: "1px solid rgba(226,232,240,0.8)" }}
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "#34d399" }} />
-                <span className="relative inline-flex h-2 w-2 rounded-full" style={{ background: "#10b981" }} />
-              </span>
-              <span className="font-medium text-slate-800">FStudios × Volostudios</span>
-              <span className="h-4 w-px bg-slate-200" />
-              <span className="text-slate-500">On recrute des talents</span>
-            </motion.div>
+            
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -275,8 +261,9 @@ export default function Hero() {
                 </svg>
               </a>
               <a href="#realisations" className="inline-flex items-center gap-2 text-base font-semibold text-slate-700 hover:text-flowly-600 transition-colors">
-                Voir nos réalisations <span>→</span>
+                Créer un compte <span>→</span>
               </a>
+              
             </motion.div>
 
             {/* Trust indicators */}
