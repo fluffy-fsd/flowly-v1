@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLang } from "@/context/LanguageContext";
 
 interface PhoneScreen {
   id: string;
@@ -169,6 +170,7 @@ const phoneScreens: PhoneScreen[] = [
 
 export default function Hero() {
   const [activeScreen, setActiveScreen] = useState(0);
+  const { t } = useLang();
 
   return (
     <section className="relative isolate overflow-hidden bg-white min-h-screen flex items-center">
@@ -213,13 +215,13 @@ export default function Hero() {
               className="mt-8 max-w-xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.5rem] !leading-[1.1]"
               style={{ fontFamily: "var(--font-sora)" }}
             >
-              On crée des{" "}
+              {t.hero.headlinePre}{" "}
               <span className="relative inline-block">
                 <span
                   className="bg-clip-text text-transparent"
                   style={{ backgroundImage: "linear-gradient(135deg, #4c6ef5, #3b5bdb)" }}
                 >
-                  solutions digitales
+                  {t.hero.headlineHighlight}
                 </span>
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
                   <path d="M2 8c50-6 100-6 150-2s100 2 146-4" stroke="url(#ug)" strokeWidth="3" strokeLinecap="round" />
@@ -231,7 +233,7 @@ export default function Hero() {
                   </defs>
                 </svg>
               </span>{" "}
-              qui convertissent.
+              {t.hero.headlinePost}
             </motion.h1>
 
             <motion.p
@@ -240,8 +242,7 @@ export default function Hero() {
               transition={{ delay: 0.35, duration: 0.6 }}
               className="mt-6 text-lg leading-relaxed text-slate-500 max-w-lg"
             >
-              Sites vitrines, SaaS, applications mobiles — nous concevons et développons
-              des produits digitaux performants qui génèrent des leads et boostent votre chiffre d&apos;affaires.
+              {t.hero.subtext}
             </motion.p>
 
             <motion.div
@@ -255,15 +256,17 @@ export default function Hero() {
                 className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-base font-semibold text-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-0.5"
                 style={{ background: "linear-gradient(135deg, #4c6ef5, #4263eb)", boxShadow: "0 10px 40px rgba(76,110,245,0.25)" }}
               >
-                Obtenir mon devis gratuit
+                {t.hero.cta}
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </a>
-              <a href="#realisations" className="inline-flex items-center gap-2 text-base font-semibold text-slate-700 hover:text-flowly-600 transition-colors">
-                Créer un compte <span>→</span>
+              <a
+                href="/auth"
+                className="inline-flex items-center gap-2 text-base font-semibold text-slate-700 hover:text-flowly-600 transition-colors"
+              >
+                {t.hero.ctaSecondary} <span>→</span>
               </a>
-              
             </motion.div>
 
             {/* Trust indicators */}
@@ -273,7 +276,7 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-400"
             >
-              {["🇫🇷 Basés en France", "⚡ Livraison rapide", "💎 Code premium", "📱 Mobile-first"].map((item) => (
+              {t.hero.trust.map((item) => (
                 <span key={item}>{item}</span>
               ))}
             </motion.div>

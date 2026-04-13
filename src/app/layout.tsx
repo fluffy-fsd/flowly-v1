@@ -13,6 +13,7 @@ import "@fontsource/sora/600.css";
 import "@fontsource/sora/700.css";
 import "@fontsource/sora/800.css";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Flowly — Agence Digitale Premium | Sites Web, SaaS & Applications",
@@ -48,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="antialiased">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
