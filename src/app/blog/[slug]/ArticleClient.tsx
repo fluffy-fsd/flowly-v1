@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/context/LanguageContext";
 import type { ArticleMeta } from "@/lib/blog";
-import type { Lang } from "@/lib/translations";
 
 interface Props {
   meta: ArticleMeta;
@@ -42,13 +41,14 @@ function renderMarkdown(md: string): string {
 }
 
 export default function ArticleClient({ meta, content }: Props) {
-  const { lang, setLang, t } = useLang();
+  const { t } = useLang();
   const html = renderMarkdown(content);
 
-  const formattedDate = new Date(meta.date).toLocaleDateString(
-    lang === "fr" ? "fr-FR" : "en-US",
-    { day: "numeric", month: "long", year: "numeric" }
-  );
+  const formattedDate = new Date(meta.date).toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -71,37 +71,16 @@ export default function ArticleClient({ meta, content }: Props) {
 
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           {/* Top row */}
-          <div className="flex items-center justify-between mb-12">
+          <div className="mb-12">
             <a
               href="/blog"
-              className="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium"
+              className="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium w-fit"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
               </svg>
               {t.blog.backToBlog.replace("← ", "")}
             </a>
-
-            {/* Language switcher */}
-            <button
-              onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-              className="flex items-center gap-0.5 rounded-xl p-1"
-              style={{ background: "#f1f5f9" }}
-            >
-              {(["fr", "en"] as Lang[]).map((l) => (
-                <span
-                  key={l}
-                  className="px-2.5 py-1 rounded-lg text-xs font-semibold transition-all duration-200"
-                  style={{
-                    background: lang === l ? "#ffffff" : "transparent",
-                    color: lang === l ? "#4263eb" : "#94a3b8",
-                    boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-                  }}
-                >
-                  {l.toUpperCase()}
-                </span>
-              ))}
-            </button>
           </div>
 
           <motion.div

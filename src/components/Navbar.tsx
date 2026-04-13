@@ -3,10 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/LanguageContext";
-import type { Lang } from "@/lib/translations";
 
 export default function Navbar() {
-  const { lang, setLang, t } = useLang();
+  const { t } = useLang();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [notifIndex, setNotifIndex] = useState(0);
@@ -32,8 +31,6 @@ export default function Navbar() {
     }, 4000);
     return () => clearInterval(interval);
   }, [t.notifications.length]);
-
-  const toggleLang = () => setLang(lang === "fr" ? "en" : "fr");
 
   return (
     <>
@@ -100,38 +97,8 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop CTAs + Language Switcher */}
+            {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-3">
-              {/* Language Switcher */}
-              <button
-                onClick={toggleLang}
-                className="flex items-center gap-0.5 rounded-xl p-1 transition-all duration-200"
-                style={{ background: "#f1f5f9" }}
-                aria-label="Switch language"
-              >
-                {(["fr", "en"] as Lang[]).map((l) => (
-                  <span
-                    key={l}
-                    className="px-2.5 py-1 rounded-lg text-xs font-semibold transition-all duration-200"
-                    style={{
-                      background: lang === l ? "#ffffff" : "transparent",
-                      color: lang === l ? "#4263eb" : "#94a3b8",
-                      boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-                    }}
-                  >
-                    {l.toUpperCase()}
-                  </span>
-                ))}
-              </button>
-
-              {/* Se connecter */}
-              <a
-                href="/auth"
-                className="px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-200"
-              >
-                {t.nav.signin}
-              </a>
-
               {/* Devis gratuit */}
               <a
                 href="#devis"
@@ -142,6 +109,14 @@ export default function Navbar() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
+              </a>
+
+              {/* Se connecter */}
+              <a
+                href="/auth"
+                className="px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-200"
+              >
+                {t.nav.signin}
               </a>
             </div>
 
@@ -184,57 +159,29 @@ export default function Navbar() {
                   </motion.a>
                 ))}
 
+                <motion.a
+                  href="#devis"
+                  onClick={() => setIsOpen(false)}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25 }}
+                  className="block mt-4 px-4 py-3 text-center text-white font-semibold rounded-xl shadow-md"
+                  style={{ background: "linear-gradient(135deg, #3b82f6, #2563eb)" }}
+                >
+                  {t.nav.devis} →
+                </motion.a>
+
                 {/* Mobile Se connecter */}
                 <motion.a
                   href="/auth"
                   onClick={() => setIsOpen(false)}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                  transition={{ delay: 0.3 }}
                   className="block mt-2 px-4 py-3 text-center text-blue-600 font-semibold rounded-xl border border-blue-200 hover:bg-blue-50 transition-colors"
                 >
                   {t.nav.signin}
                 </motion.a>
-
-                <motion.a
-                  href="#devis"
-                  onClick={() => setIsOpen(false)}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="block mt-2 px-4 py-3 text-center text-white font-semibold rounded-xl shadow-md"
-                  style={{ background: "linear-gradient(135deg, #3b82f6, #2563eb)" }}
-                >
-                  {t.nav.devis} →
-                </motion.a>
-
-                {/* Mobile Language Switcher */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.35 }}
-                  className="flex justify-center pt-2"
-                >
-                  <button
-                    onClick={toggleLang}
-                    className="flex items-center gap-0.5 rounded-xl p-1"
-                    style={{ background: "#f1f5f9" }}
-                  >
-                    {(["fr", "en"] as Lang[]).map((l) => (
-                      <span
-                        key={l}
-                        className="px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200"
-                        style={{
-                          background: lang === l ? "#ffffff" : "transparent",
-                          color: lang === l ? "#4263eb" : "#94a3b8",
-                          boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-                        }}
-                      >
-                        {l.toUpperCase()}
-                      </span>
-                    ))}
-                  </button>
-                </motion.div>
               </div>
             </motion.div>
           )}

@@ -3,14 +3,13 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/context/LanguageContext";
 import type { ArticleMeta } from "@/lib/blog";
-import type { Lang } from "@/lib/translations";
 
 interface Props {
   articles: ArticleMeta[];
 }
 
 export default function BlogListClient({ articles }: Props) {
-  const { lang, setLang, t } = useLang();
+  const { lang, t } = useLang();
 
   return (
     <div className="min-h-screen bg-white">
@@ -45,26 +44,6 @@ export default function BlogListClient({ articles }: Props) {
               Flowly
             </a>
 
-            {/* Language switcher */}
-            <button
-              onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-              className="flex items-center gap-0.5 rounded-xl p-1"
-              style={{ background: "#f1f5f9" }}
-            >
-              {(["fr", "en"] as Lang[]).map((l) => (
-                <span
-                  key={l}
-                  className="px-2.5 py-1 rounded-lg text-xs font-semibold transition-all duration-200"
-                  style={{
-                    background: lang === l ? "#ffffff" : "transparent",
-                    color: lang === l ? "#4263eb" : "#94a3b8",
-                    boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-                  }}
-                >
-                  {l.toUpperCase()}
-                </span>
-              ))}
-            </button>
           </div>
 
           <motion.div

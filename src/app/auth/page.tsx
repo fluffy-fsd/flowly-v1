@@ -3,16 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/LanguageContext";
-import type { Lang } from "@/lib/translations";
 
 type Tab = "login" | "signup";
 
 export default function AuthPage() {
-  const { lang, setLang, t } = useLang();
+  const { t } = useLang();
   const [tab, setTab] = useState<Tab>("login");
   const [agreed, setAgreed] = useState(false);
-
-  const toggleLang = () => setLang(lang === "fr" ? "en" : "fr");
 
   return (
     <div
@@ -55,27 +52,6 @@ export default function AuthPage() {
           {t.auth.backHome.replace("← ", "")}
         </a>
 
-        {/* Language switcher */}
-        <button
-          onClick={toggleLang}
-          className="flex items-center gap-0.5 rounded-xl p-1"
-          style={{ background: "#f1f5f9" }}
-          aria-label="Switch language"
-        >
-          {(["fr", "en"] as Lang[]).map((l) => (
-            <span
-              key={l}
-              className="px-2.5 py-1 rounded-lg text-xs font-semibold transition-all duration-200"
-              style={{
-                background: lang === l ? "#ffffff" : "transparent",
-                color: lang === l ? "#4263eb" : "#94a3b8",
-                boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-              }}
-            >
-              {l.toUpperCase()}
-            </span>
-          ))}
-        </button>
       </div>
 
       {/* Card */}
